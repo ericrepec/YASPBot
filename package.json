@@ -1,0 +1,27 @@
+{
+  "name": "yaspbot",
+  "version": "1.0.0",
+  "description": "YASPBot for CIEM tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericrepec/YASPBot.git"
+  },
+  "keywords": [
+    "YASP",
+    "Slack",
+    "Bot"
+  ],
+  "author": "Eric Repec",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ericrepec/YASPBot/issues"
+  },
+  "homepage": "https://github.com/ericrepec/YASPBot#readme",
+  "dependencies": {
+    "@slack/client": "^3.13.0"
+  }
+}
