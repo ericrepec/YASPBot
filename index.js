@@ -6,15 +6,22 @@
 
 /* eslint no-console:0 */
 
+
+
 var RtmClient = require('@slack/client').RtmClient;
 var RTM_EVENTS = require('@slack/client').RTM_EVENTS;
 var CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
+var MemoryDataStore = require('@slack/client').MemoryDataStore;
 
-var token = process.env.SLACK_API_TOKEN || 'xoxb-246030262992-SXaKRMdk3WNAGTi5JERLG8Iy';
+var token = process.env.SLACK_API_TOKEN || 'xoxb-246030262992-XGO1raO5uw9IltkOriKcaeKv';
 
-var rtm = new RtmClient(token, { logLevel: 'info' });
+var rtm = new RtmClient(token, {
+	  logLevel: 'info', // check this out for more on logger: https://github.com/winstonjs/winston
+	  dataStore: new MemoryDataStore() // pass a new MemoryDataStore instance to cache information
+	});
 
 var channel;
+
 var isConnected = false;
 
 // The client will emit an RTM.AUTHENTICATED event on successful connection, with the `rtm.start` payload
@@ -37,6 +44,13 @@ rtm.start();
 
 rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
   console.log('Message:', message);
+  if(message.user){
+  console.log(
+		    'User %s posted a message in %s channel',
+		    rtm.dataStore.getUserById(message.user).name,
+		    rtm.dataStore.getChannelGroupOrDMById(message.channel).name
+		  );
+	} 
   // message event loop starts here
   if(message.text.indexOf("stopyasp")>-1)
   {
@@ -44,4 +58,12 @@ rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     rtm.sendMessage('See ya later.');
     process.exit(0);
   }
+});
+
+rtm.on(RTM_EVENTS.REACTION_ADDED, function handleRtmReactionAdded(reaction) {
+	  console.log('Reaction added:', reaction);
+	});
+
+rtm.on(RTM_EVENTS.REACTION_REMOVED, function handleRtmReactionRemoved(reaction) {
+  console.log('Reaction removed:', reaction);
 });
