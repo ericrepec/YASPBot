@@ -18,6 +18,7 @@ yum install nodejs
 
 Once Node.JS is installed 
 
+
 initialize project create directory for new bot and make this the current directory
 
 run npm init 
