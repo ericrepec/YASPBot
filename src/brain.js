@@ -70,4 +70,9 @@ Brain.prototype.classify = function (){
 	this.classifier.addDocument('how is asdf application doing', 'app-health');
 	this.classifier.addDocument('is jekjfkd up', 'app-health');
 	this.classifier.addDocument('kdnvnd application status', 'app-health');
+	// wwsd skill training
+	this.classifier.addDocument('would you', 'wwsd');
+	this.classifier.addDocument('your 12', 'wwsd');
+	this.classifier.addDocument('your 6', 'wwsd');
+	this.classifier.addDocument('your 3', 'wwsd');
 }

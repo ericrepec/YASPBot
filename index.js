@@ -18,7 +18,7 @@ var Brain = require('./src/brain');
 
 
 
-var token = process.env.SLACK_API_TOKEN || 'xoxb-246030262992-V745O6CnvbDzuxlsDnnSIUAx';
+var token = process.env.SLACK_API_TOKEN || 'xoxb-246030262992-ME7MN5EXVUaJdW2iHJg78FwP';
 var yaspbot = {
 		Brain: new Brain()
 };

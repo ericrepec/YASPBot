@@ -18,6 +18,7 @@ yum install nodejs
 
 Once Node.JS is installed 
 
+
 initialize project create directory for new bot and make this the current directory
 
 run npm init 
@@ -26,6 +27,8 @@ run npm install @slack/client --save
 run npm install natural
 run npm install wordnet-db
 run npm install -g wordpos
+
+NOTE: had to edit the path for wordpos libs in the skills/app-health.js file
 
 URL for github slack official api https://github.com/slackapi/node-slack-sdk
 
